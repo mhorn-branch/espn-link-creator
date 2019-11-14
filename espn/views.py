@@ -22,14 +22,14 @@ def link_upload(request):
     io_string = io.StringIO(data_set)
     reader = csv.reader(io_string, delimiter=",", quotechar="|")
     lines = list(reader)
-    print('number of lines', len(lines[1: ]))
     number = 0
     metadata_list = []
  
     for column in lines[1: ]:
         
         number += 1
-
+        # update metadata to set key value pairs of the values in each column
+        # set $marketing_title to set the title of link in Quick Links, remove if not intended to be updated in quick links dashboard
         metadata = {
             "mvp_code": column[0],
             "brand": column[1],
@@ -45,7 +45,9 @@ def link_upload(request):
             "$desktop_url": column[11],
             "$marketing_title": column[6]
         }
-
+        # update branch_key to be the same as your client
+        # set alias if you want to provide your app.link a custom alias otherwise remove
+        # set type:2 so it can appear as a Quick Link and editable in the dashboard
         data = {
             "branch_key": "key_live_jnaWBg9DU4lXp11UZBW0ZcnoxqoUrQjS",
             "alias": column[6],
@@ -53,11 +55,9 @@ def link_upload(request):
             "data": metadata,
         }
 
-            # sending post request and saving response as response object
+        # sending post request and saving response as response object
         r = requests.post(url = branchendpoint, data = json.dumps(data))
 
-    # extract url from http response and embed in memory
-        print(number)
         try:
             jsonData = json.loads(r.text)
             if 'url' in jsonData:
