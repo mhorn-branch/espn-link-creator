@@ -49,7 +49,7 @@ def link_upload(request):
         # set alias if you want to provide your app.link a custom alias otherwise remove
         # set type:2 so it can appear as a Quick Link and editable in the dashboard
         data = {
-            "branch_key": "key_live_jnaWBg9DU4lXp11UZBW0ZcnoxqoUrQjS",
+            "branch_key": "YOUR_BRANCH_KEY",
             "alias": column[6],
             "type": 2,
             "data": metadata,
