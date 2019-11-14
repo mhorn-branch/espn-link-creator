@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'l#!4owgrogq)y!iq(hohtekig$ox6&d20p3+p_#05bo4==9ch9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['espn-branch-link-creator.herokuapp.com']
+ALLOWED_HOSTS = ['espn-branch-link-creator.herokuapp.com', 'localhost']
 
 
 # Application definition

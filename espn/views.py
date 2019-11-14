@@ -29,20 +29,6 @@ def link_upload(request):
     for column in lines[1: ]:
         
         number += 1
-        # created = Link.objects.update_or_create(
-        #     mvp_code=column[0],
-        #     brand=column[1],
-        #     channel=column[2],
-        #     vendor=column[3],
-        #     placement_type=column[4],
-        #     audience=column[5],
-        #     placement_name=column[6],
-        #     fallback_url=column[7],
-        #     deeplink_path=column[8],
-        #     utm_source=column[9],
-        #     utm_campaign=column[10],
-        #     desktop_url=column[11]
-        # )
 
         metadata = {
             "mvp_code": column[0],
@@ -57,11 +43,13 @@ def link_upload(request):
             "~channel": column[9],
             "~campaign": column[10],
             "$desktop_url": column[11],
+            "$marketing_title": column[6]
         }
 
         data = {
             "branch_key": "key_live_jnaWBg9DU4lXp11UZBW0ZcnoxqoUrQjS",
             "alias": column[6],
+            "type": 2,
             "data": metadata,
         }
 
